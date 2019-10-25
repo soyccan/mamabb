@@ -1,0 +1,19 @@
+<% if @announcement.errors.any? %>
+  <ul>
+  <% @announcement.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= f.label :title, "Title" %>
+<%= f.text_field :title %>
+<br><br>
+
+<%= f.label :poster, "Poster" %>
+<%= f.text_field :poster %>
+<br><br>
+
+<%= f.label :contents, "Contents" %>
+<%= f.text_area :contents %>
+<br><br>

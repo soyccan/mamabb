@@ -1,0 +1,41 @@
+<% is_admin = self.admin? %>
+
+<% if not is_admin %>
+    <%= form_tag '/login' do %>
+        <%= label_tag "User Name" %>
+        <%= text_field_tag :username %>
+
+        <%= label_tag "Password" %>
+        <%= password_field_tag :password %>
+
+        <%= submit_tag "Login" %>
+    <% end %>
+<% else %>
+    <%= form_tag '/logout' do %>
+        <%= submit_tag "Logout" %>
+    <% end %>
+<% end %>
+
+
+<ul>
+<% @announcements.each do |announcement| %>
+    <li>
+        <%= link_to announcement.title, announcement_path(announcement) %>
+        <br>
+        ........................................<%= announcement.poster %>
+        <br>
+        ........................................<%= announcement.created_at %>
+        <% if is_admin %>
+            <%= link_to 'Edit', edit_announcement_path(announcement) %>
+            <%= button_to 'Delete', announcement_path(announcement), 
+                :method => :delete, :data => { :confirm => "Are you sure?" }, 
+                :form => { :style => 'display:inline' } %>
+
+        <% end %>
+    </li>
+    <br>
+<% end %>
+</ul>
+<% if is_admin %>
+    <%= link_to 'New Announcement', new_announcement_path %>
+<% end %>

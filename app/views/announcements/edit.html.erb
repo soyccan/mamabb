@@ -1,0 +1,9 @@
+<% if self.admin? %>
+    <%= form_for @announcement, :url => announcement_path(@announcement), :method => :patch do |f| %>
+        <%= render :partial => 'form', :locals => { :f => f } %>
+
+        <%= f.submit "Update" %>
+    <% end %>
+<% else %>
+    <h1>403 Forbidden</h1>
+<% end %>

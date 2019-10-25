@@ -1,0 +1,9 @@
+<b>Title</b>: <%= @announcement.title %>
+<br><br>
+<b>Poster</b>: <%= @announcement.poster %>
+<br><br>
+<b>Contents</b>: <br>
+<%= simple_format(@announcement.contents) %>
+<br><br>
+
+<p><%= link_to 'Back to index', announcements_path %></p>
